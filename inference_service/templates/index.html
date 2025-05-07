@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MNIST Digit Classifier</title>
+</head>
+<body>
+    <h1>MNIST Digit Classifier</h1>
+    <form method="POST" action="/classify" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <input type="submit" value="Predict Digit">
+    </form>
+
+    {% if prediction is defined %}
+        <div>
+            <h3>Predicted Digit: {{ prediction }}</h3>
+        </div>
+    {% endif %}
+
+    <p>Powered by PyTorch and Flask</p>
+</body>
+</html>

@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gd2574-train-job
+spec:
+  template:
+    metadata:
+      name: gd2574-train-job
+    spec:
+      containers:
+      - name: model-trainer
+        image: grishmadeshmukh/model-train-gcp:latest
+        volumeMounts:
+        - name: gd2574-model-pvc
+          mountPath: /mnt
+      restartPolicy: Never
+      volumes:
+      - name: gd2574-model-pvc
+        persistentVolumeClaim:
+          claimName: gd2574-model-pvc

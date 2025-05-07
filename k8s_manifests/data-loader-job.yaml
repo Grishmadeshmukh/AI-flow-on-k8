@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gd2574-mnist-dataloader
+spec:
+  restartPolicy: Never
+  containers:
+  - name: gd2574-mnist-dataloader
+    image: python:3.10-slim
+    command:
+      - bash
+      - -c
+      - |
+        pip install torch torchvision --no-cache-dir && \
+        python -c "from torchvision import datasets; datasets.MNIST('/mnt', train=True, download=True); datasets.MNIST('/mnt', train=False, download=True)" && \
+        sleep infinity
+    volumeMounts:
+    - name: mnist-model-data
+      mountPath: /mnt
+  volumes:
+  - name: mnist-model-data
+    persistentVolumeClaim:
+      claimName: gd2574-model-pvc
