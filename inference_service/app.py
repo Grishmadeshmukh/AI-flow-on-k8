@@ -39,7 +39,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # load model
 device = torch.device("cpu")
 digit_model = DigitClassifier().to(device)
-digit_model.load_state_dict(torch.load("/mnt/ac11950_model.pt", map_location=device))
+digit_model.load_state_dict(torch.load("/mnt/gd2574_model.pt", map_location=device))
 digit_model.eval()
 
 # transformations
