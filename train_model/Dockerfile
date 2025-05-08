@@ -2,7 +2,7 @@ FROM python:3.10-slim
 
 LABEL maintainer="Grishma Deshmukh <gd2574@nyu.edu>"
 
-WORKDIR /train_service
+WORKDIR /train_model
 
 COPY requirements.txt .
 COPY train.py .
